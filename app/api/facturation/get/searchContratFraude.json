@@ -1,0 +1,274 @@
+{
+  "meta": {
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "sort"
+      },
+      {
+        "type": "text",
+        "name": "dir"
+      },
+      {
+        "type": "text",
+        "name": "id_contrat"
+      }
+    ]
+  },
+  "exec": {
+    "steps": {
+      "name": "query",
+      "module": "dbupdater",
+      "action": "custom",
+      "options": {
+        "connection": "TEST",
+        "sql": {
+          "query": "select * from estimation where num_est in(select max(num_est) from estimation where num_type_est in(1,2) and contrat_id=:P1)",
+          "params": [
+            {
+              "name": ":P1",
+              "value": "{{$_GET.id_contrat}}",
+              "test": "219499"
+            }
+          ]
+        }
+      },
+      "output": true,
+      "meta": [
+        {
+          "name": "num_est",
+          "type": "number"
+        },
+        {
+          "name": "date_debut",
+          "type": "text"
+        },
+        {
+          "name": "date_constat",
+          "type": "text"
+        },
+        {
+          "name": "index_constat",
+          "type": "number"
+        },
+        {
+          "name": "index_debut",
+          "type": "number"
+        },
+        {
+          "name": "util_crea",
+          "type": "number"
+        },
+        {
+          "name": "date_crea",
+          "type": "datetime"
+        },
+        {
+          "name": "util_maj",
+          "type": "number"
+        },
+        {
+          "name": "montant_constat",
+          "type": "number"
+        },
+        {
+          "name": "statut",
+          "type": "text"
+        },
+        {
+          "name": "date_statut",
+          "type": "text"
+        },
+        {
+          "name": "remarque",
+          "type": "text"
+        },
+        {
+          "name": "mat",
+          "type": "number"
+        },
+        {
+          "name": "num_type_est",
+          "type": "number"
+        },
+        {
+          "name": "tot_estimation",
+          "type": "number"
+        },
+        {
+          "name": "conso_estime",
+          "type": "number"
+        },
+        {
+          "name": "conso_enregistre",
+          "type": "number"
+        },
+        {
+          "name": "diff_facture",
+          "type": "text"
+        },
+        {
+          "name": "penalite",
+          "type": "number"
+        },
+        {
+          "name": "frais_coupure",
+          "type": "number"
+        },
+        {
+          "name": "materiel",
+          "type": "number"
+        },
+        {
+          "name": "consommation",
+          "type": "number"
+        },
+        {
+          "name": "clim",
+          "type": "text"
+        },
+        {
+          "name": "somme_tva",
+          "type": "number"
+        },
+        {
+          "name": "annomalie_const",
+          "type": "text"
+        },
+        {
+          "name": "observation",
+          "type": "text"
+        },
+        {
+          "name": "calibre_disj",
+          "type": "text"
+        },
+        {
+          "name": "reglage",
+          "type": "text"
+        },
+        {
+          "name": "plomber_pince",
+          "type": "text"
+        },
+        {
+          "name": "annulation",
+          "type": "text"
+        },
+        {
+          "name": "nbjrs_chaude",
+          "type": "number"
+        },
+        {
+          "name": "nbrjrs_froide",
+          "type": "number"
+        },
+        {
+          "name": "num_releve_depart",
+          "type": "number"
+        },
+        {
+          "name": "statut_validation",
+          "type": "text"
+        },
+        {
+          "name": "date_validation",
+          "type": "text"
+        },
+        {
+          "name": "user_validation",
+          "type": "number"
+        },
+        {
+          "name": "contrat_id",
+          "type": "number"
+        },
+        {
+          "name": "abonnee_nom",
+          "type": "text"
+        },
+        {
+          "name": "adresse_abonnee",
+          "type": "text"
+        },
+        {
+          "name": "pl_abonnee",
+          "type": "text"
+        },
+        {
+          "name": "compteur_abonnee",
+          "type": "text"
+        },
+        {
+          "name": "id_client",
+          "type": "number"
+        },
+        {
+          "name": "statut_validation_sc",
+          "type": "text"
+        },
+        {
+          "name": "user_val_sc",
+          "type": "number"
+        },
+        {
+          "name": "date_val_sc",
+          "type": "text"
+        },
+        {
+          "name": "pc_confirmation",
+          "type": "text"
+        },
+        {
+          "name": "energie_kwh",
+          "type": "number"
+        },
+        {
+          "name": "prix_kwh",
+          "type": "number"
+        },
+        {
+          "name": "qr_code_est",
+          "type": "text"
+        },
+        {
+          "name": "supp",
+          "type": "text"
+        },
+        {
+          "name": "com_supp",
+          "type": "text"
+        },
+        {
+          "name": "erreur_num_est",
+          "type": "number"
+        },
+        {
+          "name": "num_facture",
+          "type": "number"
+        },
+        {
+          "name": "nbr_jrs_total",
+          "type": "number"
+        },
+        {
+          "name": "facture_fraude_generer",
+          "type": "text"
+        },
+        {
+          "name": "date_maj",
+          "type": "datetime"
+        },
+        {
+          "name": "n_estimation",
+          "type": "text"
+        },
+        {
+          "name": "code_qr_code",
+          "type": "text"
+        }
+      ],
+      "type": "dbcustom_query"
+    }
+  }
+}

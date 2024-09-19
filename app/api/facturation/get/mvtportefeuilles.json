@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "sort"
+      },
+      {
+        "type": "text",
+        "name": "dir"
+      }
+    ]
+  },
+  "exec": {
+    "steps": {
+      "name": "query",
+      "module": "dbupdater",
+      "action": "custom",
+      "options": {
+        "connection": "TEST",
+        "sql": {
+          "query": "SELECT     TMP.ID_TYPE_MVT, TMP.LIBELLE_TYPE_MVT, TMP.NATURE_PRESTATION, TMP.FACT_MANU, TABLES_VALEURS.LIB_LONG \nFROM         TYPE_MVT_PORTEF TMP, TABLES_VALEURS \nWHERE     TMP.NATURE_PRESTATION = TABLES_VALEURS.ID_LIGNE \nAND      (TMP.FACT_MANU = 'F')  GROUP BY TMP.ID_TYPE_MVT, TMP.LIBELLE_TYPE_MVT, TMP.NATURE_PRESTATION, TMP.FACT_MANU, TABLES_VALEURS.LIB_LONG \nORDER BY TMP.LIBELLE_TYPE_MVT,TMP",
+          "params": []
+        }
+      },
+      "output": true,
+      "meta": [
+        {
+          "name": "id_type_mvt",
+          "type": "number"
+        },
+        {
+          "name": "libelle_type_mvt",
+          "type": "text"
+        },
+        {
+          "name": "nature_prestation",
+          "type": "number"
+        },
+        {
+          "name": "fact_manu",
+          "type": "text"
+        },
+        {
+          "name": "lib_long",
+          "type": "text"
+        }
+      ],
+      "type": "dbcustom_query"
+    }
+  }
+}
